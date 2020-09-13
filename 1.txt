@@ -1,0 +1,49 @@
+1.volatile
+	JVM	会为每个线程分配一个独立的工作内存，对于共享数据彼此不可见
+	volatile：当多个线程操作共享数据，可以保证内存的数据可见
+			  volatile不具备“互斥性”，不能保证变量的“原子性”
+			  
+2.原子变量与CAS算法
+
+3.concurrentHashMap 线程安全的哈希表，采用锁分段
+
+4.countDownLatch 闭锁，只有其他线程运算完，当前线程才继续执行
+
+5.创建执行的线程方式：实现Callable接口
+
+6.同步锁 lock
+
+7.生产者/消费者唤醒问题
+	一个是wait()方法外面为什么是while循环而不是if判断？
+		因为wait()的线程永远不能确定其他线程会在什么状态下notify()，所以必须在被唤醒、抢占到锁并且
+		从wait()方法退出的时候再次进行指定条件的判断，永远都要把wait()放到循环语句里面。
+		
+	另一个是结尾处的为什么要用notifyAll()方法，用notify()行吗？
+		之所以我们应该尽量使用notifyAll()的原因就是，notify()非常容易导致死锁
+		
+8.condition线程通信，对应object wait notify方法
+
+9.ReadWriteLock 读写锁
+
+10.线程8锁
+	分静态方法的锁默认为this,静态方法锁为class实例
+	某个时刻只有一个线程能持有锁
+	
+11.线程池
+	java.util.concurrent.Executor  负责线程的使用与调度的跟接口
+		|--ExecutorService 子接口：线程池主要接口
+			|--ThreadPoolExecutor	线程池实现类
+			|--ScheduledExecutorService	子接口：负责线程调度
+				|--ScheduledThreadPoolExecutor 继承ThreadPoolExecutor，实现ScheduledExecutorService
+				
+	工具类 Executors
+
+
+
+
+
+
+
+
+
+
