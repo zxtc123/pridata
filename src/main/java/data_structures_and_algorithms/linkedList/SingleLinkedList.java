@@ -22,12 +22,10 @@ public class SingleLinkedList {
     //表头添加元素
     public void addHead(Object value){
         Node newNode = new Node(value);
-        if(head == null){//链表为空
-            head = newNode;
-        }else{
+        if(head != null){//链表不为空
             newNode.next = head;
-            head = newNode;
         }
+        head = newNode;
         size++;
     }
 
