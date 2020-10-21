@@ -14,18 +14,6 @@ import java.util.Set;
 public class CombinationSum {
 	Set<List<Integer>>set = new HashSet<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-
-    }
-    
-    public void dfs(int[] candidates, int target, int low, int high){
-    	
-    	if(target == candidates[low]){
-    		
-    	}
-    	dfs(candidates, target, low+1, high);
-    	
-    	
-    	
-    	
+        return null;
     }
 }
