@@ -45,7 +45,7 @@ public class CountBinarySubstrings {
      * @return
      */
     public int countBinarySubstrings2(String s) {
-        List<Integer> counts = new ArrayList<Integer>();
+        List<Integer> counts = new ArrayList<>();
         int ptr = 0, n = s.length();
         while (ptr < n) {
             char c = s.charAt(ptr);
