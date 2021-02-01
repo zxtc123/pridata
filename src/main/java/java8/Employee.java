@@ -94,7 +94,7 @@ public class Employee {
                 '}';
     }
 
-    public enum Status{
+    public enum Status {
         FREE,
         BUSY,
         VACATION;

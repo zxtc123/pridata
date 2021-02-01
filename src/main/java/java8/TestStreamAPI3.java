@@ -32,7 +32,7 @@ public class TestStreamAPI3 {
      */
 
     @Test
-    public void match(){
+    public void match() {
         boolean b1 = emps.stream()
                 .allMatch((e) -> e.getStatus().equals(Employee.Status.BUSY));
         System.out.println(b1);
@@ -51,14 +51,14 @@ public class TestStreamAPI3 {
                 .findFirst();
         System.out.println(employee.get());
 
-        Optional<Employee> employee2 =emps.stream()
+        Optional<Employee> employee2 = emps.stream()
                 .filter((e) -> e.getStatus().equals(Employee.Status.FREE))
                 .findAny();
         System.out.println(employee2.get());
     }
 
     @Test
-    public void count(){
+    public void count() {
         long count = emps.stream()
                 .count();
         System.out.println(count);
@@ -80,8 +80,8 @@ public class TestStreamAPI3 {
      * T reduce(T identity, BinaryOperator<T> accumulator)/Optional<T> reduce(BinaryOperator<T> accumulator)--可以将流中元素反复结合起来，得到一个值
      */
     @Test
-    public void reduce(){
-        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+    public void reduce() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         //起始值identity 2元运算BinaryOperator
         Integer reduce = list.stream()
                 .reduce(0, (x, y) -> x + y);
@@ -100,7 +100,7 @@ public class TestStreamAPI3 {
      * collect--将流转换为其他形式，接受一个collector接口的实现，用于给stream元素做汇总方法
      */
     @Test
-    public void collect(){
+    public void collect() {
         //Collector收集器
         //Collectors工具类
         //收集到list
@@ -127,7 +127,7 @@ public class TestStreamAPI3 {
     }
 
     @Test
-    public void collect2(){
+    public void collect2() {
         //总数
         Long count = emps.stream()
                 .collect(Collectors.counting());
@@ -166,7 +166,7 @@ public class TestStreamAPI3 {
 
     //分组
     @Test
-    public void group(){
+    public void group() {
         Map<Employee.Status, List<Employee>> collect = emps.stream()
                 .collect(Collectors.groupingBy(Employee::getStatus));
         System.out.println(collect);
@@ -174,7 +174,7 @@ public class TestStreamAPI3 {
 
     //多级分组
     @Test
-    public void dGroup(){
+    public void dGroup() {
         Map<Employee.Status, Map<String, List<Employee>>> collect = emps.stream()
                 .collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy(e -> {
                     if (e.getAge() <= 35) {
@@ -191,14 +191,14 @@ public class TestStreamAPI3 {
     //分区
     //满足条件true和不满足条件false
     @Test
-    public void dvision(){
+    public void dvision() {
         Map<Boolean, List<Employee>> collect = emps.stream()
                 .collect(Collectors.partitioningBy(e -> e.getSalary() > 8000));
         System.out.println(collect);
     }
 
     @Test
-    public void join(){
+    public void join() {
         String str = emps.stream()
                 .map(Employee::getName)
                 .collect(Collectors.joining(","));

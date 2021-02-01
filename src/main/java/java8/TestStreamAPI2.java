@@ -20,6 +20,7 @@ public class TestStreamAPI2 {
     );
 
     //中间操作
+
     /**
      * 筛选与切片
      * filter--接受lambda,从流中排除某些元素
@@ -30,16 +31,16 @@ public class TestStreamAPI2 {
 
     //内部迭代：迭代操作由Stream API完成
     @Test
-    public void filter(){
+    public void filter() {
         //中间操作不会执行任何操作
         //终止操作一次性执行全部操作
         emps.stream()
-                .filter((e) -> e.getAge() >35)
+                .filter((e) -> e.getAge() > 35)
                 .forEach(System.out::println);
     }
 
     @Test
-    public void limit(){
+    public void limit() {
         emps.stream()
                 .filter((e) -> e.getSalary() >= 5000)
                 .limit(2)
@@ -47,9 +48,9 @@ public class TestStreamAPI2 {
     }
 
     @Test
-    public void skip(){
+    public void skip() {
         emps.stream()
-                .filter((e) -> e.getSalary() >=5000)
+                .filter((e) -> e.getSalary() >= 5000)
                 .skip(2)
                 .distinct()
                 .forEach(System.out::println);
@@ -61,7 +62,7 @@ public class TestStreamAPI2 {
      * flatMap--接受一个函数作为参数，将流中每个值换成另一个流，然后把所有流连接成一个流
      */
     @Test
-    public void map(){
+    public void map() {
         List<String> list = Arrays.asList("aaa", "bbb", "ccc", "eee");
         list.stream()
                 .map((str) -> str.toUpperCase())
@@ -92,12 +93,13 @@ public class TestStreamAPI2 {
     /**
      * map()类似add 整个元素添加到集合中
      * flatMap类似addAll集合元素中每个元素添加到集合中
+     *
      * @param str
      * @return
      */
-    public static Stream<Character> filterChar(String str){
+    public static Stream<Character> filterChar(String str) {
         List<Character> list = new ArrayList<>();
-        for(Character ch : str.toCharArray()){
+        for (Character ch : str.toCharArray()) {
             list.add(ch);
         }
         return list.stream();
@@ -109,17 +111,17 @@ public class TestStreamAPI2 {
      * sorted(Comparator com)--定制排序（Comparator）
      */
     @Test
-    public void sorted(){
-        List<String> list = Arrays.asList("ddd","aaa", "bbb", "ccc", "eee");
+    public void sorted() {
+        List<String> list = Arrays.asList("ddd", "aaa", "bbb", "ccc", "eee");
         list.stream()
                 .sorted()
                 .forEach(System.out::println);
 
         emps.stream()
                 .sorted((e1, e2) -> {
-                    if(e1.getAge().equals(e2.getAge())){
+                    if (e1.getAge().equals(e2.getAge())) {
                         return e1.getName().compareTo(e2.getName());
-                    }else{
+                    } else {
                         return e1.getAge().compareTo(e2.getAge());
                     }
                 }).forEach(System.out::println);

@@ -5,21 +5,21 @@ import java.util.PriorityQueue;
 
 /**
  * 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
- * 
+ * <p>
  * 输入: [3,2,1,5,6,4] 和 k = 2
  * 输出: 5
- * 
+ * <p>
  * 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
  * 输出: 4
  */
 public class FindKthLargest {
-	//时间复杂度 nlgn
-	public int findKthLargest(int[] nums, int k){
-		Arrays.sort(nums);
-		return nums[nums.length-k];
-	}
-	
-	//使用JAVA原生优先队列
+    //时间复杂度 nlgn
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
+    //使用JAVA原生优先队列
     public int findKthLargest4(int[] nums, int k) {
         int len = nums.length;
         // 使用一个含有 len 个元素的最小堆，默认是最小堆，可以不写 lambda 表达式：(a, b) -> a - b
@@ -33,7 +33,7 @@ public class FindKthLargest {
         return minHeap.peek();
     }
 
-	//自己实现一个优先队列
+    //自己实现一个优先队列
     public int findKthLargest2(int[] nums, int k) {
         int heapSize = nums.length;
         buildMaxHeap(nums, heapSize);
@@ -48,14 +48,14 @@ public class FindKthLargest {
     public void buildMaxHeap(int[] a, int heapSize) {
         for (int i = heapSize / 2; i >= 0; --i) {
             maxHeapify(a, i, heapSize);
-        } 
+        }
     }
 
     public void maxHeapify(int[] a, int i, int heapSize) {
         int l = i * 2 + 1, r = i * 2 + 2, largest = i;
         if (l < heapSize && a[l] > a[largest]) {
             largest = l;
-        } 
+        }
         if (r < heapSize && a[r] > a[largest]) {
             largest = r;
         }
@@ -70,9 +70,10 @@ public class FindKthLargest {
         a[i] = a[j];
         a[j] = temp;
     }
-    
+
     /**
      * 通过切分操作获得准基索引，不满足则继续切分操作
+     *
      * @param nums
      * @param k
      * @return
@@ -124,11 +125,11 @@ public class FindKthLargest {
         return j;
     }
 
-	
-	public static void main(String[] args) {
-		FindKthLargest f = new FindKthLargest();
-		int[] nums = {3,2,1,5,6,4};
-		int[] nums2 = {3,2,3,1,2,4,5,5,6};
-		System.out.print(f.findKthLargest(nums2, 4));
-	}
+
+    public static void main(String[] args) {
+        FindKthLargest f = new FindKthLargest();
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        int[] nums2 = {3, 2, 3, 1, 2, 4, 5, 5, 6};
+        System.out.print(f.findKthLargest(nums2, 4));
+    }
 }

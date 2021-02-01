@@ -13,11 +13,11 @@ import static java.time.temporal.ChronoField.DAY_OF_WEEK;
 public class TestLocalDateTime {
     //1.LocalDate 2.LocalTime 3.LocalDateTime
     @Test
-    public void testLocalDateTime(){
+    public void testLocalDateTime() {
         LocalDateTime ldt = LocalDateTime.now();
         System.out.println(ldt);
 
-        LocalDateTime ldt2 = LocalDateTime.of(2019,12,30,10,30,50);
+        LocalDateTime ldt2 = LocalDateTime.of(2019, 12, 30, 10, 30, 50);
         System.out.println(ldt2);
 
         LocalDateTime ldt3 = ldt.plusYears(2);
@@ -28,7 +28,7 @@ public class TestLocalDateTime {
 
     //instant 时间戳
     @Test
-    public void testInstant(){
+    public void testInstant() {
         Instant ins = Instant.now();//默认获取UTC时区
         System.out.println(ins);
 
@@ -41,7 +41,7 @@ public class TestLocalDateTime {
     //Duration 计算2个时间之间的间隔
     //Period 计算2个日期之间的间隔
     @Test
-    public void testDuration(){
+    public void testDuration() {
         Instant ins1 = Instant.now();
 
         try {
@@ -56,14 +56,14 @@ public class TestLocalDateTime {
         System.out.println(duration.toMillis());
         System.out.println("------------------------");
 
-        LocalDate ld1 = LocalDate.of(2020,4, 13);
+        LocalDate ld1 = LocalDate.of(2020, 4, 13);
         LocalDate ld2 = LocalDate.now();
-        System.out.println(Period.between(ld1,ld2).getDays());
+        System.out.println(Period.between(ld1, ld2).getDays());
     }
 
     //TemporalAdjuster 时间校正器
     @Test
-    public void testTemporalAdjuster(){
+    public void testTemporalAdjuster() {
         LocalDateTime ldt = LocalDateTime.now();
         System.out.println(ldt);
 
@@ -90,7 +90,7 @@ public class TestLocalDateTime {
 
     //DateTimeFormatter 格式化日期/时间
     @Test
-    public void testDateTimeFormatter(){
+    public void testDateTimeFormatter() {
         DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE;
         LocalDateTime ld = LocalDateTime.now();
         String format = ld.format(dtf);
@@ -105,14 +105,14 @@ public class TestLocalDateTime {
     }
 
     @Test
-    public void test(){
+    public void test() {
         Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
         availableZoneIds.forEach(System.out::println);
     }
 
     //ZoneDate ZoneTime ZoneDateTime
     @Test
-    public void testZoneDate(){
+    public void testZoneDate() {
         LocalDateTime ldt = LocalDateTime.now(ZoneId.of("Australia/ACT"));//指定时区构建时间
         System.out.println(ldt);
 

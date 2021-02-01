@@ -13,10 +13,11 @@ public class TestNonBlockingNIO {
 
     /**
      * 服务端
+     *
      * @throws IOException
      */
     @Test
-    public void server() throws IOException{
+    public void server() throws IOException {
         //1获取通道
         ServerSocketChannel ssChannel = ServerSocketChannel.open();
 
@@ -34,16 +35,16 @@ public class TestNonBlockingNIO {
         ssChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         //6.轮询式的获取选择器上已经 准备就绪的事件
-        while (selector.select() > 0){
+        while (selector.select() > 0) {
             //7.获取当前选择器中所有注册的 选择键（已就绪的事件）
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
 
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 //8.获取准备就绪的事件
                 SelectionKey selectionKey = iterator.next();
 
                 //9.判断具体是什么事件就绪
-                if(selectionKey.isAcceptable()){//10.如果是接收就绪，获取客户端连接通道
+                if (selectionKey.isAcceptable()) {//10.如果是接收就绪，获取客户端连接通道
                     SocketChannel socketChannel = ssChannel.accept();
                     //11.切换非阻塞模式
                     socketChannel.configureBlocking(false);
@@ -51,14 +52,14 @@ public class TestNonBlockingNIO {
                     socketChannel.register(selector, SelectionKey.OP_READ);
                 }
 
-                if(selectionKey.isReadable()){
+                if (selectionKey.isReadable()) {
                     //13.获取选择器上 读就绪状态的通道
-                    SocketChannel channel = (SocketChannel)selectionKey.channel();
+                    SocketChannel channel = (SocketChannel) selectionKey.channel();
 
                     //14.读取数据
                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                     int len;
-                    while ((len = channel.read(byteBuffer)) > 0){
+                    while ((len = channel.read(byteBuffer)) > 0) {
                         byteBuffer.flip();
                         System.out.println(new String(byteBuffer.array(), 0, len));
                         byteBuffer.clear();

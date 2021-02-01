@@ -22,26 +22,27 @@ X O X X
  */
 public class Solve {
     public void solve(char[][] board) {
-    	int k = board.length;
-    	int l = board[0].length;
-    	int[][] flags = new int[k][l];
-    	for(int i=0;i<k;i++)flags[i][0]=1;
-    	for(int i=1;i<k;i++){
-    		for(int j=1;j<l;j++){
-    			
-    		}
-    	}
+        int k = board.length;
+        int l = board[0].length;
+        int[][] flags = new int[k][l];
+        for (int i = 0; i < k; i++) flags[i][0] = 1;
+        for (int i = 1; i < k; i++) {
+            for (int j = 1; j < l; j++) {
+
+            }
+        }
     }
-    
+
     /**
      * 对于每一个边界上的 O，我们以它为起点，标记所有与它直接或间接相连的字母 O；
-最后我们遍历这个矩阵，对于每一个字母：
-如果该字母被标记过，则该字母为没有被字母 X 包围的字母 O，我们将其还原为字母 O；
-如果该字母没有被标记过，则该字母为被字母 X 包围的字母 O，我们将其修改为字母 X。
-
-我们可以使用深度优先搜索实现标记操作。在下面的代码中，我们把标记过的字母 O 修改为字母 A。
+     * 最后我们遍历这个矩阵，对于每一个字母：
+     * 如果该字母被标记过，则该字母为没有被字母 X 包围的字母 O，我们将其还原为字母 O；
+     * 如果该字母没有被标记过，则该字母为被字母 X 包围的字母 O，我们将其修改为字母 X。
+     * <p>
+     * 我们可以使用深度优先搜索实现标记操作。在下面的代码中，我们把标记过的字母 O 修改为字母 A。
      */
     int n, m;
+
     //先将所有边界搜索一遍，为'O'的将它标记为'A',标记为A的搜索它的周围
     //只要为'O'也标记为A，将所有A转换为'O'
     public void solve2(char[][] board) {

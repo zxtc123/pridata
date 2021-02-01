@@ -9,18 +9,18 @@ import java.util.stream.Stream;
 
 /**
  * 一.Stream 的三个操作步骤
- *
+ * <p>
  * 1.创建Stream
- *
+ * <p>
  * 2.中间操作
- *
+ * <p>
  * 3.终止操作（终端操作）
  */
 public class TestStreamAPI1 {
 
     //创建Stream
     @Test
-    public void test1(){
+    public void test1() {
         //1.通过Collection系列集合提供的stream()或paralleStream()
         List<String> list = new ArrayList<>();
         Stream<String> stream1 = list.stream();
@@ -34,7 +34,7 @@ public class TestStreamAPI1 {
 
         //4.创建无限流
         //迭代 传入初始值seed和对该值进行的循环操作UnaryOperator
-        Stream<Integer> stream4 = Stream.iterate(0, (x) -> x+2);
+        Stream<Integer> stream4 = Stream.iterate(0, (x) -> x + 2);
         stream4.limit(10).forEach(System.out::println);
 
         //生成

@@ -10,7 +10,7 @@ public class MyQueue {
     private int tail;//队尾
     private int nItem;//实际元素数
 
-    public MyQueue(int size){
+    public MyQueue(int size) {
         maxSize = size;
         array = new Object[size];
         head = 0;
@@ -20,13 +20,14 @@ public class MyQueue {
 
     /**
      * 插入
+     *
      * @param obj
      */
-    public void insert(Object obj){
+    public void insert(Object obj) {
         //判断是否超过最大容量
-        if(!isFull()){
+        if (!isFull()) {
             //到头时，将尾部移到队列开头
-            if(tail == maxSize-1)tail=-1;
+            if (tail == maxSize - 1) tail = -1;
             array[++tail] = obj;
             nItem++;
         }
@@ -34,16 +35,17 @@ public class MyQueue {
 
     /**
      * 删除
+     *
      * @return
      */
-    public Object remove(){
+    public Object remove() {
         Object removeValue = null;
         //判断队列是否为空
-        if(!isEmpty()){
+        if (!isEmpty()) {
             Object headValue = array[head];
             array[head] = null;//gc
-            if(head == maxSize-1)
-                head=0;
+            if (head == maxSize - 1)
+                head = 0;
             else
                 head++;
             removeValue = headValue;
@@ -54,25 +56,27 @@ public class MyQueue {
 
     /**
      * 查看队头元素
+     *
      * @return
      */
-    public Object peekHead(){
+    public Object peekHead() {
         return array[head];
     }
 
     /**
      * 查看队尾元素
+     *
      * @return
      */
-    public Object peekTail(){
+    public Object peekTail() {
         return array[tail];
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return nItem == maxSize;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return nItem == 0;
     }
 
@@ -109,17 +113,6 @@ public class MyQueue {
         System.out.println(queue.peekTail());//满了[6,7,3,4,5]
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

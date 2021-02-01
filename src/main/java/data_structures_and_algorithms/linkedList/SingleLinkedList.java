@@ -10,19 +10,19 @@ public class SingleLinkedList {
     private Node head;//表头
     private int size;//节点个数
 
-    private class Node{//链表内的节点
+    private class Node {//链表内的节点
         private Object data;
         private Node next;
 
-        public Node(Object data){
+        public Node(Object data) {
             this.data = data;
         }
     }
 
     //表头添加元素
-    public void addHead(Object value){
+    public void addHead(Object value) {
         Node newNode = new Node(value);
-        if(head != null){//链表不为空
+        if (head != null) {//链表不为空
             newNode.next = head;
         }
         head = newNode;
@@ -30,8 +30,8 @@ public class SingleLinkedList {
     }
 
     //表头删除元素
-    public Object deleteHead(){
-        if(size == 0)return null;
+    public Object deleteHead() {
+        if (size == 0) return null;
         Node deleteNode = head;
         head = deleteNode.next;
         size--;
@@ -39,38 +39,38 @@ public class SingleLinkedList {
     }
 
     //查找指定节点
-    public Node find(Object obj){
-        if(head == null)return null;
+    public Node find(Object obj) {
+        if (head == null) return null;
         int findSize = size;
         Node current = head;
-        while (findSize > 0 && obj != current.data){
+        while (findSize > 0 && obj != current.data) {
             current = current.next;
             findSize--;
         }
-        if(obj == current.data)
+        if (obj == current.data)
             return current;
         else
             return null;
     }
 
     //删除指定元素
-    public Node delete(Object obj){
-        if(head == null) return null;
+    public Node delete(Object obj) {
+        if (head == null) return null;
         //需要找到被删除节点和它之前的节点
         Node pre = head;
         Node current = head;
-        while (obj != current.data){
-            if(current.next == null){//后面没有元素了
+        while (obj != current.data) {
+            if (current.next == null) {//后面没有元素了
                 return null;
-            }else{
+            } else {
                 pre = current;
                 current = current.next;
             }
         }
 
-        if(current == head){
+        if (current == head) {
             head = null;
-        }else{
+        } else {
             pre.next = current.next;
         }
         size--;
@@ -78,23 +78,23 @@ public class SingleLinkedList {
     }
 
     //链表是否为空
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
     //打印链表中的元素
-    public void display(){
-        if(head == null){
+    public void display() {
+        if (head == null) {
             System.out.println("[]");
-        }else{
+        } else {
             int findSize = size;
             Node current = head;
-            while (findSize > 0){
-                if(findSize == size){
+            while (findSize > 0) {
+                if (findSize == size) {
                     System.out.print("[" + current.data);
-                }else if(findSize == 1){
+                } else if (findSize == 1) {
                     System.out.println("," + current.data + "]");
-                }else{
+                } else {
                     System.out.print("," + current.data);
                 }
                 current = current.next;
@@ -120,14 +120,6 @@ public class SingleLinkedList {
         //查找B
         System.out.println(singleList.find("B"));
     }
-
-
-
-
-
-
-
-
 
 
 }

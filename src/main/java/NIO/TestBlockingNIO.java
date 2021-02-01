@@ -14,13 +14,13 @@ import java.nio.file.StandardOpenOption;
 /**
  * 一、使用NIO完成网络通信的三个核心：
  * 1.通道（Channel）:负责连接
- *      java.nio.channels.Channel
- *          --SocketChannel
- *          --ServerSocketChannel
- *          --DatagramChannel
- *
+ * java.nio.channels.Channel
+ * --SocketChannel
+ * --ServerSocketChannel
+ * --DatagramChannel
+ * <p>
  * 2.缓冲区（Buffer）:负责数据的存取
- *
+ * <p>
  * 3.选择器（Selector）:是SelectableChannel的多路复用器。用于监控SelectableChannel的IO状况
  */
 public class TestBlockingNIO {
@@ -36,7 +36,7 @@ public class TestBlockingNIO {
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
         //读取本地文件，发送给服务端
-        while(fileChannel.read(byteBuffer) != -1){
+        while (fileChannel.read(byteBuffer) != -1) {
             byteBuffer.flip();
             socketChannel.write(byteBuffer);
             byteBuffer.clear();
@@ -46,9 +46,9 @@ public class TestBlockingNIO {
 
         //接受服务端反馈,socketChannel读到数据，说明服务端有反馈
         int len;
-        while((len = socketChannel.read(byteBuffer)) != -1){
+        while ((len = socketChannel.read(byteBuffer)) != -1) {
             byteBuffer.flip();
-            System.out.println(new String(byteBuffer.array(), 0 ,len));
+            System.out.println(new String(byteBuffer.array(), 0, len));
             byteBuffer.clear();
         }
 
@@ -73,7 +73,7 @@ public class TestBlockingNIO {
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
         //5接受客户端的数据并保存在本地
-        while(socketChannel.read(byteBuffer) != -1){
+        while (socketChannel.read(byteBuffer) != -1) {
             byteBuffer.flip();
             outChannel.write(byteBuffer);
             byteBuffer.clear();

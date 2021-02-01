@@ -4,8 +4,8 @@ public class TestVolatile {
     public static void main(String[] args) {
         RunnableDemo r = new RunnableDemo();
         new Thread(r).start();
-        while (true){
-            if (r.getFlag()){
+        while (true) {
+            if (r.getFlag()) {
                 System.out.println("---------------");
                 break;
             }
@@ -14,7 +14,7 @@ public class TestVolatile {
     }
 }
 
-class RunnableDemo implements Runnable{
+class RunnableDemo implements Runnable {
 
     private volatile boolean flag = false;
 
@@ -26,10 +26,10 @@ class RunnableDemo implements Runnable{
             e.printStackTrace();
         }
         flag = true;
-       System.out.println("flag="+flag);
+        System.out.println("flag=" + flag);
     }
 
-    public boolean getFlag(){
+    public boolean getFlag() {
         return this.flag;
     }
 }

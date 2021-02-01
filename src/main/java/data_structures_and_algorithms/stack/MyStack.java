@@ -8,37 +8,37 @@ public class MyStack {
     //最大容量
     private int max;
 
-    public MyStack(int size){
+    public MyStack(int size) {
         max = size;
         top = -1;
         array = new Object[size];
     }
 
     //压入数据
-    public void push(Object x){
-        if((top+1)<max){
-            array[++top]=x;
+    public void push(Object x) {
+        if ((top + 1) < max) {
+            array[++top] = x;
         }
     }
 
     //弹出数据
-    public Object pop(){
+    public Object pop() {
         return array[top--];
     }
 
     //获取栈顶数据
-    public Object peek(){
+    public Object peek() {
         return array[top];
     }
 
     //栈是否为空
-    public boolean isEmpty(){
-        return top==-1;
+    public boolean isEmpty() {
+        return top == -1;
     }
 
     //栈是否满了
-    public boolean isFull(){
-        return top == max-1;
+    public boolean isFull() {
+        return top == max - 1;
     }
 
     public static void main(String[] args) {
@@ -53,10 +53,10 @@ public class MyStack {
         MyStack stack = new MyStack(20);
         String str = "Hello World!";
         char[] chars = str.toCharArray();
-        for(char c: chars){
+        for (char c : chars) {
             stack.push(c);
         }
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             System.out.print(stack.pop());
         }
     }

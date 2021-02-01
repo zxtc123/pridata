@@ -11,7 +11,7 @@ import java.nio.channels.Selector;
 import java.util.Iterator;
 
 /**
- *DatagramChannel UDP
+ * DatagramChannel UDP
  */
 public class TestNonBlockingNIO2 {
 
@@ -26,15 +26,15 @@ public class TestNonBlockingNIO2 {
 
         Selector selector = Selector.open();
         dChannel.register(selector, SelectionKey.OP_READ);
-        while (selector.select() > 0){
+        while (selector.select() > 0) {
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             SelectionKey selectionKey = iterator.next();
 
-            if(selectionKey.isReadable()){
+            if (selectionKey.isReadable()) {
                 ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                 dChannel.receive(byteBuffer);
                 byteBuffer.flip();
-                System.out.println(new String(byteBuffer.array(), 0 , byteBuffer.limit()));
+                System.out.println(new String(byteBuffer.array(), 0, byteBuffer.limit()));
                 byteBuffer.clear();
             }
 
@@ -44,6 +44,7 @@ public class TestNonBlockingNIO2 {
 
     /**
      * 发送
+     *
      * @throws IOException
      */
     @Test

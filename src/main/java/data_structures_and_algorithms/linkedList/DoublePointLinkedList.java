@@ -11,22 +11,22 @@ public class DoublePointLinkedList {
     private Node head;//头节点
     private Node tail;//尾节点
 
-    private class Node{//链表内的节点
+    private class Node {//链表内的节点
         private Object data;
         private Node next;
 
-        public Node(Object data){
+        public Node(Object data) {
             this.data = data;
         }
     }
 
     //表头添加元素
-    public void addHead(Object value){
+    public void addHead(Object value) {
         Node newNode = new Node(value);
-        if(size == 0){//没有元素则首尾都添加该元素
+        if (size == 0) {//没有元素则首尾都添加该元素
             head = newNode;
             tail = newNode;
-        }else{
+        } else {
             newNode.next = head;
             head = newNode;
         }
@@ -34,12 +34,12 @@ public class DoublePointLinkedList {
     }
 
     //表尾添加元素
-    public void addTail(Object value){
+    public void addTail(Object value) {
         Node newNode = new Node(value);
-        if(size == 0){//没有元素则首尾都添加该元素
+        if (size == 0) {//没有元素则首尾都添加该元素
             head = newNode;
             tail = newNode;
-        }else{
+        } else {
             tail.next = newNode;
             tail = newNode;
         }
@@ -47,12 +47,12 @@ public class DoublePointLinkedList {
     }
 
     //表头删除元素
-    public boolean deleteHead(){
-        if(size == 0)return false;
-        if(size == 1){
+    public boolean deleteHead() {
+        if (size == 0) return false;
+        if (size == 1) {
             head = null;
             tail = null;
-        }else{
+        } else {
             Node deleteNode = head;
             head = deleteNode.next;
         }
@@ -61,23 +61,23 @@ public class DoublePointLinkedList {
     }
 
     //链表是否为空
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
     //打印链表中的元素
-    public void display(){
-        if(head == null){
+    public void display() {
+        if (head == null) {
             System.out.println("[]");
-        }else{
+        } else {
             int findSize = size;
             Node current = head;
-            while (findSize > 0){
-                if(findSize == size){
+            while (findSize > 0) {
+                if (findSize == size) {
                     System.out.print("[" + current.data);
-                }else if(findSize == 1){
+                } else if (findSize == 1) {
                     System.out.println("," + current.data + "]");
-                }else{
+                } else {
                     System.out.print("," + current.data);
                 }
                 current = current.next;

@@ -9,16 +9,16 @@ import java.util.Set;
 
 /**
  * 给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。
-
-示例:
-
-输入: [4, 6, 7, 7]
-输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
- * @author Administrator
+ * <p>
+ * 示例:
+ * <p>
+ * 输入: [4, 6, 7, 7]
+ * 输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
  *
+ * @author Administrator
  */
 public class FindSubsequences {
-    
+
     List<Integer> temp = new ArrayList<Integer>();
     List<List<Integer>> ans = new ArrayList<List<Integer>>();
 
@@ -43,10 +43,10 @@ public class FindSubsequences {
             dfs(cur + 1, last, nums);
         }
     }
-    
+
     // 定义全局变量保存结果
     List<List<Integer>> res = new ArrayList<>();
-    
+
     public List<List<Integer>> findSubsequences2(int[] nums) {
         // idx 初始化为 -1，开始 dfs 搜索。
         dfs(nums, -1, new ArrayList<>());
@@ -65,7 +65,7 @@ public class FindSubsequences {
         Set<Integer> set = new HashSet<>();
         for (int i = idx + 1; i < nums.length; i++) {
             // 1. 如果 set 中已经有与 nums[i] 相同的值了，说明加上 nums[i] 后的所有可能的递增序列之前已经被搜过一遍了，因此停止继续搜索。
-            if (set.contains(nums[i])) { 
+            if (set.contains(nums[i])) {
                 continue;
             }
             set.add(nums[i]);

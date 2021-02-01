@@ -12,7 +12,7 @@ public class TestLock {
     }
 }
 
-class Ticket implements Runnable{
+class Ticket implements Runnable {
 
     private int ticket = 100;
 
@@ -20,19 +20,19 @@ class Ticket implements Runnable{
 
     @Override
     public void run() {
-        while (true){
+        while (true) {
 
             lock.lock();
             try {
-                if(ticket>0){
+                if (ticket > 0) {
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println(Thread.currentThread().getName()+"余票"+ --ticket);
+                    System.out.println(Thread.currentThread().getName() + "余票" + --ticket);
                 }
-            }finally {
+            } finally {
                 lock.unlock();
             }
 

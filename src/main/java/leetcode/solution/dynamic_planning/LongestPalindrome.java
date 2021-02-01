@@ -3,39 +3,40 @@ package leetcode.solution.dynamic_planning;
 /**
  * 5. 最长回文子串
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
- * @author Administrator
- *输入: "babad"
- *输出: "bab"
- *注意: "aba" 也是一个有效答案。
  *
- *回文去掉2头后依旧是回文,可以使用动态规划
+ * @author Administrator
+ * 输入: "babad"
+ * 输出: "bab"
+ * 注意: "aba" 也是一个有效答案。
+ * <p>
+ * 回文去掉2头后依旧是回文,可以使用动态规划
  */
 public class LongestPalindrome {
     public String longestPalindrome(String s) {
-     	int length = s.length();
-    	int r = length;
-    	String lp = "";
-    	String lgpd = "";
-    	for(int l=0;l<length;l++){
-    		lp = s.substring(l);
-    		while(r>l && !palindrome(lp)){
-    			r--;
-    			lp = s.substring(l,r);
-    		}
-    		if(lp.length()>lgpd.length())lgpd=lp;
-    	}
-    	return lgpd;
+        int length = s.length();
+        int r = length;
+        String lp = "";
+        String lgpd = "";
+        for (int l = 0; l < length; l++) {
+            lp = s.substring(l);
+            while (r > l && !palindrome(lp)) {
+                r--;
+                lp = s.substring(l, r);
+            }
+            if (lp.length() > lgpd.length()) lgpd = lp;
+        }
+        return lgpd;
     }
-    
-    private boolean palindrome(String s){
-    	char[] arr = s.toCharArray();
-    	int length = arr.length;
-    	for(int i=0;i<length;i++){
-    		if(arr[i]!=arr[length-i-1])return false;
-    	}
-    	return true;
+
+    private boolean palindrome(String s) {
+        char[] arr = s.toCharArray();
+        int length = arr.length;
+        for (int i = 0; i < length; i++) {
+            if (arr[i] != arr[length - i - 1]) return false;
+        }
+        return true;
     }
-    
+
     //暴力解法，枚举所有的子串
     public String longestPalindrome2(String s) {
         int len = s.length();
@@ -70,12 +71,13 @@ public class LongestPalindrome {
         }
         return true;
     }
-    
+
     /**
      * 动态规划
      * dp[i,j]表示子串s[i....j]是否为回文
      * 当子串头尾不等时，不是回文，当字串头尾相等时，
      * dp[i,j]=dp[i+1,j-1]由去掉头尾的子串决定
+     *
      * @param s
      * @return
      */

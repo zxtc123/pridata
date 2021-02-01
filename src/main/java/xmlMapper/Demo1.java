@@ -31,7 +31,7 @@ public class Demo1 {
         cities.add(c4);
         cities.add(c5);
 
-        Province p = new Province(1,"吉林省",cities);
+        Province p = new Province(1, "吉林省", cities);
         /***************模拟查询数据库的结果********************/
 
         /***************如何进行转换**************************/

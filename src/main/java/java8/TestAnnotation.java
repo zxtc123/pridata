@@ -15,12 +15,13 @@ public class TestAnnotation {
         Method method = clazz.getMethod("show");
 
         MyAnnotation[] annotationsByType = method.getAnnotationsByType(MyAnnotation.class);
-        for(MyAnnotation annotation : annotationsByType){
+        for (MyAnnotation annotation : annotationsByType) {
             System.out.println(annotation.value());
         }
     }
 
     @MyAnnotation("hello")
     @MyAnnotation("world")
-    public void show(@MyAnnotation("abc") String str){}
+    public void show(@MyAnnotation("abc") String str) {
+    }
 }

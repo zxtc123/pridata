@@ -6,23 +6,23 @@ import java.util.List;
 /**
  * 连通图的节点
  * 记录相邻的节点
- * @author Administrator
  *
+ * @author Administrator
  */
 class Node {
     public int val;
     public List<Node> neighbors;
-    
+
     public Node() {
         val = 0;
         neighbors = new ArrayList<Node>();
     }
-    
+
     public Node(int _val) {
         val = _val;
         neighbors = new ArrayList<Node>();
     }
-    
+
     public Node(int _val, ArrayList<Node> _neighbors) {
         val = _val;
         neighbors = _neighbors;

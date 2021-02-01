@@ -8,7 +8,7 @@ public class MyPriorityQueue {
     private int maxSize;//最大容量
     private int nItem;//实际元素数
 
-    public MyPriorityQueue(int size){
+    public MyPriorityQueue(int size) {
         maxSize = size;
         array = new int[size];
         nItem = 0;
@@ -17,18 +17,18 @@ public class MyPriorityQueue {
     /**
      * 插入
      */
-    public void insert(int s){
-        if(!isFull()){
-            if(nItem == 0){
+    public void insert(int s) {
+        if (!isFull()) {
+            if (nItem == 0) {
                 array[nItem++] = s;
-            }else{
+            } else {
                 int j = nItem - 1;
                 //使用插入排序
-                while(j >= 0 && array[j] > s){
-                    array[j+1] = array[j];
+                while (j >= 0 && array[j] > s) {
+                    array[j + 1] = array[j];
                     j--;
                 }
-                array[j+1] = s;
+                array[j + 1] = s;
                 nItem++;
             }
         }
@@ -37,10 +37,10 @@ public class MyPriorityQueue {
     /**
      * 删除
      */
-    public int remove(){
+    public int remove() {
         int removeValue = -1;//置为-1表示没有
         //判断队列是否为空
-        if(!isEmpty()){
+        if (!isEmpty()) {
             int k = nItem - 1;
             removeValue = array[k];
             array[k] = -1;
@@ -49,15 +49,15 @@ public class MyPriorityQueue {
         return removeValue;
     }
 
-    public int peek(){
-        return array[nItem-1];
+    public int peek() {
+        return array[nItem - 1];
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return nItem == maxSize;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return nItem == 0;
     }
 

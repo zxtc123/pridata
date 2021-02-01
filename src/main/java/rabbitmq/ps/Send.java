@@ -12,17 +12,17 @@ import java.util.concurrent.TimeoutException;
  */
 public class Send {
 
-    private static final String EXCHANGE_NAME="test_exchange_fanout";
+    private static final String EXCHANGE_NAME = "test_exchange_fanout";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
         //声明交换器
-        channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
+        channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
         //发送消息
-        String msg ="hello ps!";
-        channel.basicPublish(EXCHANGE_NAME,"",null,msg.getBytes());
-        System.out.println("send msg:"+msg);
+        String msg = "hello ps!";
+        channel.basicPublish(EXCHANGE_NAME, "", null, msg.getBytes());
+        System.out.println("send msg:" + msg);
 
         channel.close();
         connection.close();

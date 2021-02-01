@@ -5,33 +5,33 @@ import java.util.PriorityQueue;
 
 /**
  * 给你一个整数数组 nums，请你将该数组升序排列。
- * @author Administrator
- *1 <= nums.length <= 50000
- *-50000 <= nums[i] <= 50000
  *
- *归并排序利用了分治的思想来对序列进行排序。对一个长为 n 的待排序的序列，我们将其分解成两个长度为n/2
- *的子序列。每次先递归调用函数使两个子序列有序，然后我们再线性合并两个有序的子序列使整个序列有序。
+ * @author Administrator
+ * 1 <= nums.length <= 50000
+ * -50000 <= nums[i] <= 50000
+ * <p>
+ * 归并排序利用了分治的思想来对序列进行排序。对一个长为 n 的待排序的序列，我们将其分解成两个长度为n/2
+ * 的子序列。每次先递归调用函数使两个子序列有序，然后我们再线性合并两个有序的子序列使整个序列有序。
  */
 public class SortArray {
     public int[] sortArray(int[] nums) {
         Arrays.sort(nums);
         return nums;
     }
-    
+
     public int[] sortArray2(int[] nums) {
-    	int[]sort=new int[nums.length];
-    	PriorityQueue<Integer>pq=new PriorityQueue<Integer>();
-    	for(int i:nums){
-    		pq.offer(i);
-    	}
-    	for(int j=0;j<nums.length;j++){
-    		sort[j]=pq.poll();
-    	}
-    	return sort;
+        int[] sort = new int[nums.length];
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+        for (int i : nums) {
+            pq.offer(i);
+        }
+        for (int j = 0; j < nums.length; j++) {
+            sort[j] = pq.poll();
+        }
+        return sort;
     }
-    
-    
-    
+
+
     // 归并排序
 
     /**
@@ -45,7 +45,7 @@ public class SortArray {
         mergeSort(nums, 0, len - 1, temp);
         return nums;
     }
-    
+
     /**
      * 对数组 nums 的子区间 [left, right] 进行归并排序
      *
@@ -73,7 +73,7 @@ public class SortArray {
         }
         mergeOfTwoSortedArray(nums, left, mid, right, temp);
     }
-    
+
     /**
      * 对数组 arr 的子区间 [left, right] 使用插入排序
      *
@@ -92,7 +92,7 @@ public class SortArray {
             arr[j] = temp;
         }
     }
-    
+
     /**
      * 合并两个有序数组：先把值复制到临时数组，再合并回去
      *
@@ -125,14 +125,14 @@ public class SortArray {
                 j++;
             }
         }
-    }  
-    
+    }
+
     public static void main(String[] args) {
-    	SortArray s = new SortArray();
-		int[]nums={5,2,3,1};
-		int[]nums2={5,1,1,2,0,0};
-		for(int i : s.sortArray4(nums)){
-			System.out.println(i);	
-		}
-	}
+        SortArray s = new SortArray();
+        int[] nums = {5, 2, 3, 1};
+        int[] nums2 = {5, 1, 1, 2, 0, 0};
+        for (int i : s.sortArray4(nums)) {
+            System.out.println(i);
+        }
+    }
 }

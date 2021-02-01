@@ -19,38 +19,38 @@ import java.nio.file.StandardOpenOption;
 
 /**
  * 一、通道：用于源节点与目标节点的连接。在JAVA NIO负责缓冲区中数据的传输
- *      Channel本身不储存数据，需配合缓冲区进行传输
- *
+ * Channel本身不储存数据，需配合缓冲区进行传输
+ * <p>
  * 二、通道主要实现类
- *      FileChannel
- *      SocketChannel
- *      ServerSocketChannel
- *      DatagramChannel
- *
+ * FileChannel
+ * SocketChannel
+ * ServerSocketChannel
+ * DatagramChannel
+ * <p>
  * 三、获取通道
- *      1.Java 针对通道提供了getChannel()方法
- *          本地IO
- *          FileInputStream/FileOutputStream
- *          RandomAccessFile
- *
- *          网络IO
- *          Socket
- *          ServerSocket
- *          DatagramSocket
- *       2.JDK1.7 针对通道提供了静态方法open()
- *       3.Files工具栏的 newByteChannel()
- *
+ * 1.Java 针对通道提供了getChannel()方法
+ * 本地IO
+ * FileInputStream/FileOutputStream
+ * RandomAccessFile
+ * <p>
+ * 网络IO
+ * Socket
+ * ServerSocket
+ * DatagramSocket
+ * 2.JDK1.7 针对通道提供了静态方法open()
+ * 3.Files工具栏的 newByteChannel()
+ * <p>
  * 四、通道之间数据传输
- *      transferFrom()
- *      transferTo()
- *
+ * transferFrom()
+ * transferTo()
+ * <p>
  * 五、分散（Scatter）与聚集（Gather）
  * 分散读取（Scattering Reads）:将通道中数据分散到多个缓冲区中
  * 聚集写入（Gathering Writes）:将多个缓冲区中的数据聚集到通道中
- *
+ * <p>
  * 六、字符集 Charset
- *      编码  字符--》字节数组
- *      解码  字节数组--》字符
+ * 编码  字符--》字节数组
+ * 解码  字节数组--》字符
  */
 public class TestChannel {
 
@@ -71,7 +71,7 @@ public class TestChannel {
 
         //编码
         ByteBuffer encode = encoder.encode(cBuf);
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             System.out.println(encode.get());
         }
 
@@ -85,7 +85,7 @@ public class TestChannel {
      * 分散（Scatter）与聚集（Gather）
      */
     @Test
-    public void test4() throws IOException{
+    public void test4() throws IOException {
         RandomAccessFile raf1 = new RandomAccessFile("1.txt", "rw");
         //1获取通道
         FileChannel channel1 = raf1.getChannel();
@@ -96,7 +96,7 @@ public class TestChannel {
         ByteBuffer[] bufs = {buf1, buf2};
         channel1.read(bufs);
 
-        for(ByteBuffer byteBuffer : bufs){
+        for (ByteBuffer byteBuffer : bufs) {
             byteBuffer.flip();
         }
         System.out.println(new String(bufs[0].array(), 0, bufs[0].limit()));
@@ -156,6 +156,7 @@ public class TestChannel {
 
     /**
      * 对之前流的支持，利用通道完成文件复制（非直接缓冲区）
+     *
      * @throws IOException
      */
     @Test
@@ -168,7 +169,7 @@ public class TestChannel {
         //2分配指定大小的缓存
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         //3将通道中数据存入缓存区
-        while(inChannel.read(byteBuffer) != -1){
+        while (inChannel.read(byteBuffer) != -1) {
             byteBuffer.flip();
             //4将缓存中数据写入通道
             outChannel.write(byteBuffer);

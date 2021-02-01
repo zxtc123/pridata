@@ -5,22 +5,22 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class KthSmallest {
-	
-	//直接排序
-	   public int kthSmallest(int[][] matrix, int k) {
-	        int rows = matrix.length, columns = matrix[0].length;
-	        int[] sorted = new int[rows * columns];
-	        int index = 0;
-	        for (int[] row : matrix) {
-	            for (int num : row) {
-	                sorted[index++] = num;
-	            }
-	        }
-	        Arrays.sort(sorted);
-	        return sorted[k - 1];
-	    }
-	
-	   //归并排序，使用小堆来维护
+
+    //直接排序
+    public int kthSmallest(int[][] matrix, int k) {
+        int rows = matrix.length, columns = matrix[0].length;
+        int[] sorted = new int[rows * columns];
+        int index = 0;
+        for (int[] row : matrix) {
+            for (int num : row) {
+                sorted[index++] = num;
+            }
+        }
+        Arrays.sort(sorted);
+        return sorted[k - 1];
+    }
+
+    //归并排序，使用小堆来维护
     public int kthSmallest2(int[][] matrix, int k) {
         PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
             public int compare(int[] a, int[] b) {

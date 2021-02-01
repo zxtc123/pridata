@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class Send {
 
-    private static final String QUEUE_NAME="test_simple_queue";
+    private static final String QUEUE_NAME = "test_simple_queue";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //获取MQ连接
@@ -20,11 +20,11 @@ public class Send {
         //从连接中获取通道
         Channel channel = connection.createChannel();
         //创建队列声明
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String msg ="hello simple!";
-        channel.basicPublish("",QUEUE_NAME,null,msg.getBytes());
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String msg = "hello simple!";
+        channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
 
-        System.out.println("send msg:"+msg);
+        System.out.println("send msg:" + msg);
         channel.close();
         connection.close();
     }

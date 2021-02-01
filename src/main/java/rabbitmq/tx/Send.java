@@ -17,7 +17,7 @@ public class Send {
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         String msg = "hello tx message";
 
         try {
@@ -27,7 +27,7 @@ public class Send {
 //            int x = 1/0;
 
             channel.txCommit();
-        }catch (Exception e){
+        } catch (Exception e) {
             channel.txRollback();
             System.out.println("send message rollback");
         }

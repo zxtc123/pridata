@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * 找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
- *
- *输入: k = 3, n = 7
- *输出: [[1,2,4]]
- *
- *输入: k = 3, n = 9
- *输出: [[1,2,6], [1,3,5], [2,3,4]]
+ * <p>
+ * 输入: k = 3, n = 7
+ * 输出: [[1,2,4]]
+ * <p>
+ * 输入: k = 3, n = 9
+ * 输出: [[1,2,6], [1,3,5], [2,3,4]]
  */
 public class CombinationSum3 {
     public List<List<Integer>> combinationSum3(int k, int n) {
@@ -52,9 +52,9 @@ public class CombinationSum3 {
             path.removeLast();
         }
     }
-    
+
     public static void main(String[] args) {
-    	CombinationSum3 c = new CombinationSum3();
-    	System.out.print(c.combinationSum3(3, 9));
-	}
+        CombinationSum3 c = new CombinationSum3();
+        System.out.print(c.combinationSum3(3, 9));
+    }
 }

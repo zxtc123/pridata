@@ -5,41 +5,42 @@ import java.util.List;
 
 /**
  * 给定一个整数 n，生成所有由 1 ... n 为节点所组成的 二叉搜索树 。
- * 
+ * <p>
  * 输入：3
-输出：
-[
-  [1,null,3,2],
-  [3,2,null,1],
-  [3,1,null,null,2],
-  [2,1,3],
-  [1,null,2,null,3]
-]
-解释：
-以上的输出对应以下 5 种不同结构的二叉搜索树：
-
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
+ * 输出：
+ * [
+ *   [1,null,3,2],
+ *   [3,2,null,1],
+ *   [3,1,null,null,2],
+ *   [2,1,3],
+ *   [1,null,2,null,3]
+ * ]
+ * 解释：
+ * 以上的输出对应以下 5 种不同结构的二叉搜索树：
+ * <p>
+ * 1         3     3      2      1
+ * \       /     /      / \      \
+ * 3     2     1      1   3      2
+ * /     /       \                 \
+ * 2     1         2                 3
  */
 public class GenerateTrees {
-	public List<TreeNode> generateTrees(int n) {
+    public List<TreeNode> generateTrees(int n) {
         if (n == 0) {
             return new LinkedList<TreeNode>();
         }
         return generateTrees(1, n);
     }
 
-	/**
-	 * 根据二叉树特性，根节点左子树都小于根节点，右子树都大于根节点
-	 * 当根节点为i，左子树集合【1....i-1】 右子树【i+1.....n】
-	 * 罗列出所有左右子树集合，从左右子树选择一个作为根节点的左节点和右节点
-	 * @param start
-	 * @param end
-	 * @return
-	 */
+    /**
+     * 根据二叉树特性，根节点左子树都小于根节点，右子树都大于根节点
+     * 当根节点为i，左子树集合【1....i-1】 右子树【i+1.....n】
+     * 罗列出所有左右子树集合，从左右子树选择一个作为根节点的左节点和右节点
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     public List<TreeNode> generateTrees(int start, int end) {
         List<TreeNode> allTrees = new LinkedList<TreeNode>();
         if (start > end) {
@@ -69,15 +70,21 @@ public class GenerateTrees {
     }
 }
 
- class TreeNode {
-     int val;
-     TreeNode left;
-     TreeNode right;
-     TreeNode() {}
-     TreeNode(int val) { this.val = val; }
-     TreeNode(int val, TreeNode left, TreeNode right) {
-         this.val = val;
-         this.left = left;
-         this.right = right;
-     }
- }
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}

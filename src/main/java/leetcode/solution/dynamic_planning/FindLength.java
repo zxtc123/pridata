@@ -2,39 +2,39 @@ package leetcode.solution.dynamic_planning;
 
 /**
  * 给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。
- * 
+ * <p>
  * 输入:
-A: [1,2,3,2,1]
-B: [3,2,1,4,7]
-输出: 3
-解释: 
-长度最长的公共子数组是 [3, 2, 1]。
+ * A: [1,2,3,2,1]
+ * B: [3,2,1,4,7]
+ * 输出: 3
+ * 解释:
+ * 长度最长的公共子数组是 [3, 2, 1]。
  */
 public class FindLength {
-	//暴力解法，会超时
+    //暴力解法，会超时
     public int findLength(int[] A, int[] B) {
-    	int i = 0;
-    	int j = 0;
-    	int maxlength=0;
-    	while(i<A.length && j<B.length){
-    		j=0;
-    		while(i<A.length && j<B.length-1 && A[i]!=B[j]){
-    			j++;
-    		}
-    		int length=0;
-    		int a=i;
-    		int b=j;
-    		while(a<A.length && b<B.length && A[a]==B[b]){
-    			a++;
-    			b++;
-    			length++;
-    		}
-    		maxlength = Math.max(maxlength, length);
-    		i++;
-    	}
-    	return maxlength;
+        int i = 0;
+        int j = 0;
+        int maxlength = 0;
+        while (i < A.length && j < B.length) {
+            j = 0;
+            while (i < A.length && j < B.length - 1 && A[i] != B[j]) {
+                j++;
+            }
+            int length = 0;
+            int a = i;
+            int b = j;
+            while (a < A.length && b < B.length && A[a] == B[b]) {
+                a++;
+                b++;
+                length++;
+            }
+            maxlength = Math.max(maxlength, length);
+            i++;
+        }
+        return maxlength;
     }
-    
+
     //动态规划，最后一个字符的最长前缀由前一个字符决定
     //如果前面字符不等，最长前缀为0，否则最长前缀为前一个字符的最长前缀+1
     //dp[i][j]=dp[i-1][j-1]+ 1
@@ -52,9 +52,10 @@ public class FindLength {
         }
         return max;
     }
-    
+
     /**
      * 滑动窗口，只滑动A或B，计算滑动后AB重复的部分
+     *
      * @param A
      * @param B
      * @return
@@ -89,14 +90,13 @@ public class FindLength {
     }
 
 
-    
     public static void main(String[] args) {
-    	FindLength f = new FindLength();
-    	int[]A={1,2,3,2,1};
-    	int[]B={3,2,1,4,7};
-    	
-    	int[]A1={0,0,0,0,0,0,1,0,0,0};
-    	int[]B1={0,0,0,0,0,0,0,1,0,0};
-    	System.out.print(f.findLength2(A, B));
-	}
+        FindLength f = new FindLength();
+        int[] A = {1, 2, 3, 2, 1};
+        int[] B = {3, 2, 1, 4, 7};
+
+        int[] A1 = {0, 0, 0, 0, 0, 0, 1, 0, 0, 0};
+        int[] B1 = {0, 0, 0, 0, 0, 0, 0, 1, 0, 0};
+        System.out.print(f.findLength2(A, B));
+    }
 }

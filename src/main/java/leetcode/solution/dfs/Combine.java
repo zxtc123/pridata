@@ -7,18 +7,18 @@ import java.util.List;
  * @Author: zhaoxin
  * @Date: 2020/9/8 16:00
  * 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: n = 4, k = 2
  * 输出:
  * [
- *   [2,4],
- *   [3,4],
- *   [2,3],
- *   [1,2],
- *   [1,3],
- *   [1,4],
+ * [2,4],
+ * [3,4],
+ * [2,3],
+ * [1,2],
+ * [1,3],
+ * [1,4],
  * ]
  */
 public class Combine {
@@ -38,7 +38,6 @@ public class Combine {
      * 对于 cur 位置，我们需要考虑 a[cur] 取或者不取，
      * 如果取，我们需要把 a[cur] 放入一个临时的答案数组中（即上面代码中的 temp），再执行 dfs(cur+1,n)，执行结束后需要对 temp 进行回溯；
      * 如果不取，则直接执行 dfs(cur+1,n)
-     *
      */
     public void dfs(int cur, int n, int k) {
         // 剪枝：temp 长度加上区间 [cur, n] 的长度小于 k，不可能构造出长度为 k 的 temp

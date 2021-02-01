@@ -5,31 +5,32 @@ import java.util.Queue;
 
 /**
  * 给定一个二叉树，检查它是否是镜像对称的。
- * @author Administrator
  *
+ * @author Administrator
  */
 public class IsSymmetric {
-	//递归比较对称的节点
+    //递归比较对称的节点
     public boolean isSymmetric(TreeNode root) {
-        if(root==null)
+        if (root == null)
             return true;
         return isSymmetric(root.left, root.right);
     }
 
-    private boolean isSymmetric(TreeNode left, TreeNode right){
-        if(right==null && left==null)
+    private boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (right == null && left == null)
             return true;
-        else if (left==null || right==null)
+        else if (left == null || right == null)
             return false;
-        else 
-            return left.val == right.val 
-            && isSymmetric(left.left,right.right)
-            && isSymmetric(left.right,right.left);
+        else
+            return left.val == right.val
+                    && isSymmetric(left.left, right.right)
+                    && isSymmetric(left.right, right.left);
     }
-    
+
     /**
      * 将左右节点放入队列中比较
      * 比较完后，2节点的左右节点相反放入队列，继续比较
+     *
      * @param root
      * @return
      */

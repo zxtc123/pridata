@@ -13,8 +13,8 @@ public class TestStreamAPI {
      * 给定【1，2，3，4，5】返回【1，4，9，16，25】
      */
     @Test
-    public void test(){
-        Integer[] nums = new Integer[]{1,2,3,4,5};
+    public void test() {
+        Integer[] nums = new Integer[]{1, 2, 3, 4, 5};
         List<Integer> numList = Arrays.stream(nums)
                 .map(x -> x * x)
                 .collect(Collectors.toList());
